@@ -1,15 +1,19 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 
+alpha = 1000 * np.pi
 omegaZero = 2 * np.pi / 0.005
-N = 15 * 10**3 / omegaZero
+end = 15 * 10**3
+start = -15 * 10**3
 
-omegaN = np.arange(-N, N+1, 1) * omegaZero
+omegaN = np.arange(start, end, omegaZero)
+
 
 Xn = np.array([])
 
 for i in range(len(omegaN)):
-    Xn = np.append(Xn, 2 * np.pi * 1j * (-1**omegaN[i]) / (np.pi * omegaN[i]))
+    Xn = np.append(Xn, alpha**2 / (alpha + 1j * omegaN[i])**2)
 
 fig , ax = plt.subplots(2 ,1)
 ax[0].stem(omegaN, np.abs(Xn))
