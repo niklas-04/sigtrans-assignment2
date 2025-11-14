@@ -5,6 +5,7 @@ omegaZero = 2 * np.pi / 0.005
 N = int(np.floor(15 * 10**3 / omegaZero))
 
 omegaN = np.arange(-N, N+1)
+xaxis = omegaN * omegaZero
 
 Xn = np.array([])
 
@@ -16,8 +17,8 @@ for i in range(len(omegaN)):
     
 
 fig , ax = plt.subplots(2 ,1)
-ax[0].stem(omegaN, np.abs(Xn))
-ax[1].stem(omegaN, np.angle(Xn))
+ax[0].stem(xaxis, np.abs(Xn))
+ax[1].stem(xaxis, np.angle(Xn))
 
 ax[0].set_title("Magnitude spectrum |X(ω)|")
 ax[0].set_xlabel(r'$\omega$ [rad/s]')
